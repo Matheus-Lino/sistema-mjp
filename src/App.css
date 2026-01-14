@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+   themes: light --default;
+ }
+
+:root {
+  --navbar-height: 72px;
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.main-shell {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - var(--navbar-height));
+  overflow: hidden;
+  overflow-x: hidden;
+  width: 100%;
+  gap: 0;
+  max-width: 100vw;
+}
+
+@media (max-width: 767px) {
+  .main-shell {
+    overflow-x: auto;
+    overflow-y: visible;
+  }
+}
+
+.sidebar-fixed {
+  width: 220px !important;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+  background-color: rgb(32, 32, 109);
+  padding: 28px 0;
+  transition: all 0.3s ease;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-list li {
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+
+.menu-list a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  width: 100%;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+
+.menu-list a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 12px;
+}
+
+.content-shell {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(100vh - var(--navbar-height));
+  padding: 20px 24px 36px;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+/* Financeiro layout: keep cards, charts, and tables aligned */
+.financeiro-page .dashboard-header {
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.financeiro-page .dashboard-header > div {
+  flex: 1;
+  min-width: 220px;
+}
+
+.financeiro-page .financeiro-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin: 0;
+}
+
+.financeiro-page .dashboard-table {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (max-width: 767px) {
+  .content-shell {
+    overflow-x: auto;
+    max-height: none;
+    padding: 12px 12px 24px;
+  }
+}
+
+/* Ensure navbar height for layout calc */
+.navbar {
+  min-height: var(--navbar-height);
+  position: relative;
+  z-index: 30;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+/* Responsive hidden classes */
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}
+
+/* Prevent horizontal scroll */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*[class*="grid"],
+*[class*="flex"] {
+  box-sizing: border-box;
+}
